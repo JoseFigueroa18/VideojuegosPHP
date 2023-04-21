@@ -1,0 +1,8 @@
+1. Hacer registro de usuarios en un slidebar.
+2. Hacer el login del usuario en el slidebar.
+3. Hacer página de edición de datos de los usuarios.
+4. Hacer Sección de creación de entradas para los usuarios identificados.
+5. Listar entradas en la página de inicio.
+6. Hacer página de ecición de entradas para usuarios logueados.
+7. Buscador de entradas.
+8. Añadir buscador de entradas a la WEB.
