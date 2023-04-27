@@ -1,4 +1,4 @@
- <?php require_once 'includes/helpers.php'?>
+ <?php require_once 'includes/helpers.php';?>
 
  <aside id="sidebar">
             <div id="login" class="bloque">
@@ -16,6 +16,21 @@
 
             <div id="register" class="bloque">
                 <h3>Registrate</h3>
+
+                <!-- MOSTRAR ERRORES -->
+                <?php if (isset($_SESSION['completado'])):?>
+                    <div class="alerta alerta-exito">
+                        <?php $_SESSION['completado']?>
+                    </div>
+                <?php elseif(isset($_SESSION['errores']['general'])):?>
+                    <div class="alerta alerta-exito">
+                        <?php $_SESSION['errores']['general']?>
+                    </div>
+                <?php endif; ?>
+
+
+
+
                 <form action="registro.php" method="POST">
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre">
@@ -35,7 +50,7 @@
 
                     <input type="submit" name="submit" value="Ingresar">
                 </form>
-                <?php echo borrarErrores();?>
+                <?php borrarErrores() ?>
             </div>
  </aside>
  

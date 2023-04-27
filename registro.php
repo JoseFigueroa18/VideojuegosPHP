@@ -1,6 +1,11 @@
 <?php 
-session_start();
  if (isset($_POST)) {
+
+    //Conexión con la base de datos
+    require_once 'includes/conexion.php';
+
+    //Inicio de sesión
+    //session_start();
 
     //Recoger los valores del formulario y evaluar si existen mediante un operador ternario
     //esto para evitar hacer muchos if (isset($_POST[''])){} else {}
@@ -54,12 +59,32 @@ session_start();
     //Validar que no se encuentren errores
     if (count($errores) == 0) {
         $guardarUsuario = true;
+        //Ciframos la contraseña porque guardar en texto plano es ilegal según Betanco
+        $passwordSegura = password_hash($password, PASSWORD_BCRYPT, ['cost' => 4]); //cost es la cantidad de veces que se cifrará
+        /*var_dump($password);
+        var_dump($passwordSegura);
+        var_dump(password_verify($password,$passwordSegura));
+        die();*/
+
         //Insertar en BD
+        $sql = "INSERT INTO usuarios VALUES (null, '$nombre', '$apellidos', '$email', '$passwordSegura', CURDATE());";
+        $guardar = mysqli_query($db, $sql);
+        var_dump(mysqli_error($db));
+        die();
+
+        if ($guardar) {
+            $_SESSION['completado'] = "El registro se ha completado con exito";
+
+        }
+        else{
+            $_SESSION['errores']['general'] = "El registro no se ha guardado";
+        }
+
+
     }
     else{
         $_SESSION['errores'] = $errores;
-        header('Location: index.php');
     }
-
  }
+ header('Location: index.php');
 ?>
