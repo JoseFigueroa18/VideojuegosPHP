@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS videojuegos;
+CREATE DATABASE IF NOT EXISTS blog;
 
-USE videojuegos;
+USE blog;
 
 CREATE TABLE usuarios(
 id          int(255) auto_increment not null,
