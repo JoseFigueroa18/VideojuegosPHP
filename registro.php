@@ -5,7 +5,7 @@
     require_once 'includes/conexion.php';
 
     //Inicio de sesión
-    if (isset($_SESSION)) {
+    if (!isset($_SESSION)) {
         session_start();
     }
 

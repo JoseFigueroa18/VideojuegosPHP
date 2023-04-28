@@ -1,6 +1,7 @@
 <?php 
 //Aquí van funciones que nos ayudan en las diferentes partes del proyecto
 
+//Alertas de mostrar errores
 function mostrarError ($errores,$campo){
     $alerta = '';
     if(isset($errores[$campo]) && !empty($campo)){
@@ -9,6 +10,7 @@ function mostrarError ($errores,$campo){
     return $alerta;
 }
 
+//Borrar errores de la sesión de registro
 function borrarErrores(){
     $borrado = false;
 
@@ -24,9 +26,14 @@ function borrarErrores(){
         $borrado = $_SESSION['completado'];
     }
 
+    if (isset($_SESSION['errores_entrada'])) {
+        $_SESSION['errores_entrada'] = null;
+    }
+
     return $borrado;
 }
 
+//Borrar sesión del LOGIN
 function borrarSesion(){
     $borrado = false;
 
@@ -39,7 +46,7 @@ function borrarSesion(){
     return $borrado;
 }
 
-
+//Mostrar categorias en la barra lateral | Sidebar
 function conseguirCategorias($conexion){
     $sql = "SELECT * FROM categorias ORDER BY id ASC;";
     $categorias = mysqli_query($conexion, $sql);
@@ -52,4 +59,19 @@ function conseguirCategorias($conexion){
     }
     return $result;
 }
+
+//Mostrar entradas
+function conseguirUltimasEntradas($conexion){
+    $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ORDER BY e.id DESC LIMIT 5;";
+    $entradas = mysqli_query($conexion, $sql);
+    $result = array();
+
+    if ($entradas && mysqli_num_rows($entradas) >= 1) {
+        $result = $entradas;
+    }else {
+        //echo 'Hubo un problema';
+    }
+    return $result;
+}
+
 ?>

@@ -11,7 +11,18 @@ INSERT INTO categorias VALUES (null, 'DEPORTES');
 INSERT INTO categorias VALUES (null, 'AVENTURA');
 
 #INSERTS PARA ENTRADAS
-INSERT INTO entradas VALUES (null, 4, 1, 'CONTRA', 'Juego de acción', CURDATE());
-INSERT INTO entradas VALUES (null, 4, 3, 'PES', 'Juego de deportes', CURDATE());
-INSERT INTO entradas VALUES (null, 2, 2, 'Persona 4', 'Juego de rol', (CURDATE()-2));
+INSERT INTO entradas VALUES (null, 1, 1, 'CONTRA', 'Juego de acción', CURDATE());
+INSERT INTO entradas VALUES (null, 3, 3, 'PES', 'Juego de deportes', CURDATE());
+INSERT INTO entradas VALUES (null, 1, 2, 'Persona 4', 'Juego de rol', (CURDATE()-2));
+
+SELECT e.*, c.nombre FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ORDER BY e.id DESC LIMIT 5;
+
+ TRUNCATE TABLE categorias;
+
+ 
+
+DESC entradas;
+
+SELECT * FROM entradas;
+
 
