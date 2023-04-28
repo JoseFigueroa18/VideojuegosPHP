@@ -35,11 +35,18 @@ body{
     background: green;
     box-shadow: 0px 1px 3px #ccc;
     margin-bottom: 15px;
-    border-radius: 2px;
+    border-radius: 10px;
 }
 
 .alerta-error{
+    padding: 5px;
+    font-size: 14px;
+    color: white;
     background: red;
+    box-shadow: 0px 1px 3px #ccc;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    /*text-align: center;*/
 }
 
 .fecha{
@@ -178,6 +185,7 @@ input[type="submit"],
     padding: 7px;
 }
 
+/*Botones de sesión*/
 .boton{
     color:white !important;
     text-align: center;

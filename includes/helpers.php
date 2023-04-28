@@ -14,14 +14,42 @@ function borrarErrores(){
 
     if (isset($_SESSION['errores'])) {
         $_SESSION['errores'] = null;
-        $borrado = session_unset();
+        //$borrado = session_unset();
+        $borrado = $_SESSION['errores'];
     }
 
     if (isset($_SESSION['completado'])) {
         $_SESSION['completado'] = null;
-        $borrado = session_unset();
+        //$borrado = session_unset();
+        $borrado = $_SESSION['completado'];
     }
-    
+
     return $borrado;
+}
+
+function borrarSesion(){
+    $borrado = false;
+
+    if (isset($_SESSION['error_login'])) {
+        $_SESSION['error_login'] = null;
+        //$borrado = session_unset();
+        $borrado = $_SESSION['error_login'];
+    }
+
+    return $borrado;
+}
+
+
+function conseguirCategorias($conexion){
+    $sql = "SELECT * FROM categorias ORDER BY id ASC;";
+    $categorias = mysqli_query($conexion, $sql);
+    $result = array();
+
+    if ($categorias && mysqli_num_rows($categorias) >= 1) {
+        $result = $categorias;
+    }else {
+        echo 'Hubo un problema';
+    }
+    return $result;
 }
 ?>

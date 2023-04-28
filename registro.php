@@ -5,13 +5,15 @@
     require_once 'includes/conexion.php';
 
     //Inicio de sesión
-    //session_start();
+    if (isset($_SESSION)) {
+        session_start();
+    }
 
     //Recoger los valores del formulario y evaluar si existen mediante un operador ternario
     //esto para evitar hacer muchos if (isset($_POST[''])){} else {}
     $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false ;
     $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false ;
-    $email = isset($_POST['email']) ? $_POST['email'] : false ;
+    $email = isset($_POST['email']) ? trim($_POST['email']) : false ;
     $password = isset($_POST['password']) ? $_POST['password'] : false ; 
 
     //Array de errores
@@ -69,8 +71,8 @@
         //Insertar en BD
         $sql = "INSERT INTO usuarios VALUES (null, '$nombre', '$apellidos', '$email', '$passwordSegura', CURDATE());";
         $guardar = mysqli_query($db, $sql);
-        var_dump(mysqli_error($db));
-        die();
+        //var_dump(mysqli_error($db));
+        //die();
 
         if ($guardar) {
             $_SESSION['completado'] = "El registro se ha completado con exito";
@@ -79,7 +81,6 @@
         else{
             $_SESSION['errores']['general'] = "El registro no se ha guardado";
         }
-
 
     }
     else{

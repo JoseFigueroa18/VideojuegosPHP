@@ -1,6 +1,7 @@
 <!-- CONEXION -->
 <?php
     require_once 'conexion.php';
+    require_once 'includes/helpers.php';
 ?>
 
 <!-- HTML -->
@@ -10,7 +11,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog de Videojuegos</title>
+    <title>Blog Génerico</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -27,25 +28,21 @@
     <nav id="menu">
         <ul>
             <li>
-                <a href="index.php">Inicio</a>
+                <a href="index.php">INICIO</a>
+            </li>
+            <?php 
+                $categorias = conseguirCategorias($db);
+               while($categoria = mysqli_fetch_assoc($categorias)) :
+            ?>
+                <li>
+                    <a href="categoria.php?id=<?= $categoria['id']?>"><?= $categoria['nombre']?></a>
+                </li>
+            <?php  endwhile;?>
+            <li>
+                <a href="index.php">SOBRE MÍ</a>
             </li>
             <li>
-                <a href="index.php">Categorias 1</a>
-            </li>
-            <li>
-                <a href="index.php">Categorias 2</a>
-            </li>
-            <li>
-                <a href="index.php">Categorias 3</a>
-            </li>
-            <li>
-                <a href="index.php">Categorias 4</a>
-            </li>
-            <li>
-                <a href="index.php">Sobre mi</a>
-            </li>
-            <li>
-                <a href="index.php">Contacto</a>
+                <a href="index.php">CONTACTO</a>
             </li>
         </ul>
     </nav>
