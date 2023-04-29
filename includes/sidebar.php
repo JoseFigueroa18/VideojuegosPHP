@@ -4,12 +4,6 @@
 
         <div id="buscador" class="bloque">
             <h3>Buscar</h3>
-            <!-- alerta error -->
-            <?php if(isset($_SESSION['error_login'])): ?>
-                <div class="alerta-error"> 
-                  <?= $_SESSION['error_login']; ?>
-                </div>
-            <?php endif ?>
 
             <form action="buscar.php" method="POST">
                 <input type="text" name="busqueda">
@@ -83,6 +77,10 @@
                 <label for="password">Contraseña</label>
                 <input type="password" name="password">
                 <?php echo isset($_SESSION['errores']) ? mostrarError($_SESSION['errores'], 'password') : '';?>
+
+                <label for="pass">Confirmar contraseña</label>
+                <input type="password" name="pass">
+                <?php echo isset($_SESSION['errores']) ? mostrarError($_SESSION['errores'], 'pass') : '';?>
 
                 <input type="submit" name="submit" value="Ingresar">
             </form>

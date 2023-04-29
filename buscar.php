@@ -32,6 +32,7 @@
             endwhile;
         else:
     ?>
+    <br>
     <div class="alerta-error" >No hay entradas en esta categoria</div>
 
     <?php

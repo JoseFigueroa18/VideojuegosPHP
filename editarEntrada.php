@@ -32,7 +32,7 @@
         <label for="descripcion">Descripción:</label>
         <textarea type="text" name="descripcion"><?=$entradaActual['descripcion']?></textarea>
         <?php echo isset($_SESSION['errores_entrada']) ? mostrarError($_SESSION['errores_entrada'], 'descripcion') : '';?>
-
+        <br>
         <label for="categoria">Categoría:</label>
         <select name="categoria">
             <?php
@@ -51,6 +51,8 @@
 
 
         </select>
+        <br>
+        <br>
 
         <input type="submit" value="Actualizar">
 

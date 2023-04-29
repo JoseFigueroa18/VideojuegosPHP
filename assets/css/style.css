@@ -171,6 +171,32 @@ input[type="password"]{
     margin-bottom: 10px;
 }
 
+/*--------------TEXT AREA --------------*/
+textarea {
+    /*border: 1px solid black;*/
+    width: 97%;
+    height: 150px;
+}
+
+/*-------------- SELECT --------------*/
+select {
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 12px;
+    border: 1px solid #cccccc;
+    padding: 8px;
+    width: 200px;
+  }
+  
+  select option {
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 12px;
+    border: 1px solid #cccccc;
+    padding: 8px;
+  }
+
+
 input[type="button"],
 input[type="submit"],
 .boton{

@@ -14,7 +14,8 @@
     $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false ;
     $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false ;
     $email = isset($_POST['email']) ? trim($_POST['email']) : false ;
-    $password = isset($_POST['password']) ? $_POST['password'] : false ; 
+    $password = isset($_POST['password']) ? $_POST['password'] : false ;
+    $pass = isset($_POST['pass']) ? $_POST['pass'] : false ; 
 
     //Array de errores
     $errores = array();
@@ -54,6 +55,9 @@
     else{
         $password_validado = false;
         $errores['password'] = "La contraseña está vacia";
+    }
+    if ($password != $pass){
+        $errores['pass'] = "La contraseñas ingresadas son diferentes";
     }
     //var_dump($errores);
 
