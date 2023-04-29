@@ -17,17 +17,18 @@ function borrarErrores(){
     if (isset($_SESSION['errores'])) {
         $_SESSION['errores'] = null;
         //$borrado = session_unset();
-        $borrado = $_SESSION['errores'];
+        $borrado = true;
     }
 
     if (isset($_SESSION['completado'])) {
         $_SESSION['completado'] = null;
         //$borrado = session_unset();
-        $borrado = $_SESSION['completado'];
+        $borrado = true;
     }
 
     if (isset($_SESSION['errores_entrada'])) {
         $_SESSION['errores_entrada'] = null;
+        $borrado = true;
     }
 
     return $borrado;
@@ -61,8 +62,11 @@ function conseguirCategorias($conexion){
 }
 
 //Mostrar entradas
-function conseguirUltimasEntradas($conexion){
-    $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ORDER BY e.id DESC LIMIT 5;";
+function conseguirEntradas($conexion, $limit = null){
+    $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ORDER BY e.id DESC ";
+    if($limit){
+        $sql .= "LIMIT 4";
+    }
     $entradas = mysqli_query($conexion, $sql);
     $result = array();
 
@@ -73,5 +77,6 @@ function conseguirUltimasEntradas($conexion){
     }
     return $result;
 }
+
 
 ?>

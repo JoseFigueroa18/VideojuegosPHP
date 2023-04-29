@@ -8,7 +8,7 @@
                 <!-- cerrar sesion -->
                 <a href="crearEntrada.php" class="boton boton-verde">Crear entradas</a>
                 <a href="crearCategoria.php" class="boton">Crear categoría</a>
-                <a href="cerrarSesion.php" class="boton boton-naranja">Mis datos</a>
+                <a href="misDatos.php" class="boton boton-naranja">Mis datos</a>
                 <a href="cerrarSesion.php" class="boton boton-rojo">Cerrar Sesión</a>
             </div>
         <?php endif ?>
